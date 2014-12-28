@@ -1,0 +1,30 @@
+<div class="errors">
+  <% if @tree.errors.any? %>
+    <% @tree.errors.full_messages.each do |error| %>
+      <%= error %>
+      <% end %>
+  <% end %>
+</div>
+
+<div class="form">
+  <%= form_for @tree do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div>
+      <%= f.file_field :image %>
+    </div>
+
+    <div>
+      <%= f.submit 'Submit' %>
+    </div>
+
+  <% end %>
+</div>
