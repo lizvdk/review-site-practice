@@ -16,6 +16,7 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <%= link_to 'Add a Christmas Tree', new_tree_path %>
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <li><%= link_to 'View My Profile', user_path(current_user) %></li>
