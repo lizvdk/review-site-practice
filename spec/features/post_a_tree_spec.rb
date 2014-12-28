@@ -28,6 +28,22 @@ feature 'post a tree', %Q(
     expect(page).to have_content tree.title
     expect(page).to have_content tree.description
   end
-  scenario 'authenticated user posts a tree with invalid attributes'
-  scenario 'unauthenticated cannot post a tree'
+  scenario 'authenticated user posts a tree with invalid attributes' do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+    visit root_path
+
+    click_on 'Add a Christmas Tree'
+    click_on 'Submit'
+
+    expect(page).to have_content "Title can't be blank"
+    expect(page).to have_content "Description can't be blank"
+  end
+
+  scenario 'unauthenticated cannot post a tree' do
+    visit new_tree_path
+
+    expect(page).to have_content 'You need to sign in or sign up before
+                                  continuing.'
+  end
 end

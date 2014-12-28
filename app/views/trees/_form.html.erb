@@ -1,3 +1,11 @@
+<div class="errors">
+  <% if @tree.errors.any? %>
+    <% @tree.errors.full_messages.each do |error| %>
+      <%= error %>
+      <% end %>
+  <% end %>
+</div>
+
 <div class="form">
   <%= form_for @tree do |f| %>
     <div>
