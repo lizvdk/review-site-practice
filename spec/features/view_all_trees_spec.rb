@@ -26,4 +26,14 @@ feature 'view all trees', %Q(
     page.should have_selector(
                           'ul#trees li:nth-child(3)', text: trees[0].user.role)
   end
+
+  scenario 'trees titles link to show' do
+    trees = FactoryGirl.create_list(:tree, 3)
+    visit trees_path
+
+    click_on trees[0].title
+
+    expect(page).to have_content trees[0].title
+    expect(page).to have_content trees[0].description
+  end
 end
