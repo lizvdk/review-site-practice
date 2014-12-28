@@ -1,1 +1,7 @@
 <h2> Christmas Trees! </h2>
+<ul id="trees">
+  <% @trees.each do |tree| %>
+    <li><%= link_to tree.title, tree_path(tree) %><br>
+    posted by: <%= tree.user.email %> (<%= tree.user.role %>)</li>
+  <% end %>
+</ul>
